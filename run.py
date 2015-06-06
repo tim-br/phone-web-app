@@ -7,15 +7,16 @@ import json
 import re
  
 app = Flask(__name__)
- 
-# Add a Twilio phone number or number verified with Twilio as the caller ID
-caller_id = "+12125551234"
- 
-# put your default Twilio Client name here, for when a phone number isn't given
-default_client = "jenny"
+
 #load the json file containing api keys
 file = open('keys.json')
 data = json.load(file)
+
+# Add a Twilio phone number or number verified with Twilio as the caller ID
+caller_id = data["my_phone_number"]
+ 
+# put your default Twilio Client name here, for when a phone number isn't given
+default_client = "jenny"
 
  
 @app.route('/voice', methods=['GET', 'POST'])
